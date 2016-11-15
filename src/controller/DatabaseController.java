@@ -163,9 +163,7 @@ public class DatabaseController {
         try {
             ResultSet resultSet = connection.prepareStatement(query).executeQuery();
             while(resultSet.next()) {
-                for(String description : Arrays.asList(resultSet.getString("tag").split(",\\s*"))){
-                    descriptions.add(description);
-                }
+                descriptions.addAll(Arrays.asList(resultSet.getString("tag").split(",\\s*")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
